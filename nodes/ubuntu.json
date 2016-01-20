@@ -7,8 +7,12 @@
     "run_list": [
         "recipe[apt]",
         "recipe[apache2]",
+        "recipe[apache2::mod_php5]",
         "recipe[postgresql]",
         "recipe[postgresql::server]",
-        "recipe[git]"
+        "recipe[git]",
+        "recipe[php]",
+        "recipe[php::module_pgsql]",
+        "recipe[php::module_mysql]"
     ]
 }
