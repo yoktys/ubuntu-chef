@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu"
+  config.vm.box = "ubuntu14.04"
   # http://qiita.com/shinichi62/items/1050f89ed693e3baa3f8
   # config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
 
@@ -63,6 +63,9 @@ Vagrant.configure(2) do |config|
   config.omnibus.chef_version = :latest
   config.berkshelf.enabled = true
   config.berkshelf.berksfile_path = './Berksfile'
+
+  # http://stackoverflow.com/questions/18808540/error-when-running-vagrant-up-too-many-open-files-getcwd-errnoemfile
+  config.vm.provision :shell, :inline => "ulimit -n 4048"
 
   #config.vm.provision :chef_solo do |chef|
   #   #chef.log_level = :debug
